@@ -1,53 +1,37 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
+  <v-app id="app">
+    <router-view/>
+    <loader
+      :loaderOn="loaderOn"
+      :linearLoader="$store.state.loader.linearLoader"
+      :circleLoader="$store.state.loader.circleLoader"
+    />
+    <popup-message
+      :message="$store.state.popupMessage.message"
+      :title="$store.state.popupMessage.title"
+      :type="$store.state.popupMessage.type"
+      :btConfirm="$store.state.popupMessage.btConfirm"
+      :btCancel="$store.state.popupMessage.btCancel"
+      :textForm="$store.state.popupMessage.textForm"
+      :callback="$store.state.popupMessage.callback"
+      :messageForm="$store.state.popupMessage.messageForm"
+    />
   </v-app>
 </template>
 
 <script>
+import Loader from './components/common/Loader.vue';
+import PopupMessage from './components/common/PopupMessage.vue';
 export default {
-  name: 'App',
+  name: 'home',
   components: {
+    Loader,
+    PopupMessage
   },
-
-  data: () => ({
-    //
-  }),
+  computed: {
+    loaderOn: function() {
+      return this.$store.state.loader.loaderOn;
+    }
+  }
 };
 </script>
