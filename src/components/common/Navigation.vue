@@ -6,15 +6,33 @@
             dark
             shift
         >
-            <v-btn small @click="$router.push('/')">
-            <span>Home</span>
-            <v-icon small>fas fa-home</v-icon>
-            </v-btn>
+            <v-tooltip top>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn 
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="$router.push('/')"
+                >
+                  <span>Home</span>
+                  <v-icon small>fas fa-home</v-icon>
+                </v-btn>
+              </template>
+              Home
+            </v-tooltip>
+            <v-tooltip top>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn 
+                  v-bind="attrs"
+                  v-on="on"
+                  @click="$router.push('/configuracao')"
+                >
+                  <span>Configuração</span>
+                  <v-icon small>fas fa-cog</v-icon>
+                </v-btn>
+              </template>
+              Configuração
+            </v-tooltip>
 
-            <v-btn small @click="$router.push('/configuracao')">
-            <span>Configuração</span>
-            <v-icon small>fas fa-cog</v-icon>
-            </v-btn>
             <v-spacer></v-spacer>
 
             <v-tooltip top>
@@ -74,17 +92,27 @@
             </v-tooltip>
 
             <v-spacer></v-spacer>
-            <UserInfo/>
+            <v-tooltip top>
+              <template v-slot:activator="{ on, attrs }">
+                <div style="height: 100%;" v-bind="attrs" v-on="on">
+                  <calculator/>
+                </div>
+              </template>
+              Calculadora
+            </v-tooltip>
 
+            <UserInfo/>
         </v-bottom-navigation>
     </v-main>
 </template>
 
 <script>
-import UserInfo from './UserInfo'
+import Calculator from './Calculator.vue'
+import UserInfo from './UserInfo.vue'
 export default {
   components: {
-    UserInfo
+    UserInfo,
+    Calculator
   },
   data: () => ({ value: 0 }),
   computed: {
@@ -105,9 +133,9 @@ export default {
 
 <style>
 .navigation {
-    position: fixed;
-    bottom: 20px;
-    left: 10px;
-    right: 10px;
+  position: fixed;
+  bottom: 20px;
+  left: 10px;
+  right: 10px;
 }
 </style>

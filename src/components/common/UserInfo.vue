@@ -1,5 +1,6 @@
 <template>
   <v-menu
+      top
       v-model="menu"
       :close-on-content-click="false"
       offset-y
@@ -7,7 +8,6 @@
       <template v-slot:activator="{ on, attrs }">
         <v-btn
           fab
-          color="primary"
           class="user-info"
           v-bind="attrs"
           v-on="on"
@@ -20,7 +20,7 @@
         <v-list>
           <v-list-item>
             <v-list-item-avatar color="primary">
-              <span class="black--text headline">{{getInicials(userData.username)}}</span>
+              <span class="black--text headline login-info">{{getInicials(userData.username)}}</span>
             </v-list-item-avatar>
 
             <v-list-item-content>
@@ -53,17 +53,21 @@
 </template>
 
 <script>
-import { mapState } from "vuex"
+// import { mapState } from "vuex"
 export default {
     data() {
         return {
-            menu: false
+            menu: false,
+            userData : {
+              username: 'Guilhermy Henrique',
+              email: 'guilhermy.1993@gmail.com'
+            }
         }
     },
     computed: {
-        ...mapState({
-            userData: (state) => state.userData.userData
-        })
+        // ...mapState({
+        //     userData: (state) => state.userData.userData
+        // })
     },
     methods: {
         getInicials(nome){
@@ -82,10 +86,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 button.user-info {
-    height: 22px !important;
-    margin-top: 10px !important;
-    font-size: large !important;
+  background-color: #5e499a00 !important;
+  font-size: 1.375rem !important;
+}
+.v-application .headline.login-info {
+  font-size: 1.2rem !important;
 }
 </style>

@@ -1,18 +1,18 @@
 <template>
     <v-container>
-        <h1>Olá {{userData.username}}</h1>
+        <h1>Olá Guilhermy Henrique</h1>
         <p>Tela de configurações</p>
     </v-container>
 </template>
 
 <script>
-import { mapState } from "vuex"
+// import { mapState } from "vuex"
 export default {
-    computed:{
-        ...mapState({
-            userData: (state) => state.userData.userData
-        })
-    },
+    // computed:{
+    //     ...mapState({
+    //         userData: (state) => state.userData.userData
+    //     })
+    // },
 }
 </script>
 
