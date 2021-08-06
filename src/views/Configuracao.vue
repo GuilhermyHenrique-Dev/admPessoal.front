@@ -1,6 +1,7 @@
 <template>
     <v-container>
         <h1>Olá {{userData.username}}</h1>
+        <p>Tela de configurações</p>
     </v-container>
 </template>
 
@@ -11,9 +12,6 @@ export default {
         ...mapState({
             userData: (state) => state.userData.userData
         })
-    },
-    created() {
-        // this.$store.dispatch("userData/verifyAuth");
     },
 }
 </script>

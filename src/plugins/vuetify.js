@@ -17,10 +17,10 @@ export default new Vuetify({
         },
         themes: {
             light: {
-              primary: '#118ACA',
-              secondary: '#430F4A',
-              accent: '#CFD403',
-              error: '#8f2c11',
+                primary: '#5e499a',
+                secondary: '#430F4A',
+                accent: '#CFD403',
+                error: '#8f2c11',
             }
         }
     }
